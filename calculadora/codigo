@@ -19,6 +19,7 @@ public class GermanoFrame extends javax.swing.JFrame {
     
     double numero = -1;
     char sinal;
+    StringBuilder numeroTemp = new StringBuilder();
     private void operacao(){
     
         switch(sinal){
@@ -27,12 +28,13 @@ public class GermanoFrame extends javax.swing.JFrame {
                 numero = numero * (Double.parseDouble(txtTela.getText()));
                 break;
             case '/':
+                numero = numero / (Double.parseDouble(txtTela.getText()));
                 break;
             case '+':
+                numero = numero + (Double.parseDouble(txtTela.getText()));
                 break;
             case '-':
-                break;
-            default:
+                numero = numero - (Double.parseDouble(txtTela.getText()));
             
         }
         
@@ -400,17 +402,59 @@ public class GermanoFrame extends javax.swing.JFrame {
 
     private void btnDividirActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
-        txtTela.setText(txtTela.getText() + '/');
+        if (numero == -1){
+            
+            numero = Double.parseDouble(txtTela.getText());
+            sinal = '/';
+            lblNumeros.setText(numero+"/");
+            txtTela.setText("");
+            
+        } else{
+            
+            operacao();
+            sinal = '*';
+            lblNumeros.setText(numero+"/");
+            txtTela.setText("");
+            
+        }
     }                                          
 
     private void btnMenosActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
-        txtTela.setText(txtTela.getText() + '-');
+        if (numero == -1){
+            
+            numero = Double.parseDouble(txtTela.getText());
+            sinal = '-';
+            lblNumeros.setText(numero+"-");
+            txtTela.setText("");
+            
+        } else{
+            
+            operacao();
+            sinal = '-';
+            lblNumeros.setText(numero+"-");
+            txtTela.setText("");
+            
+        }
     }                                        
 
     private void btnMaisActionPerformed(java.awt.event.ActionEvent evt) {                                        
         // TODO add your handling code here:
-        txtTela.setText(txtTela.getText() + '+');
+        if (numero == -1){
+            
+            numero = Double.parseDouble(txtTela.getText());
+            sinal = '+';
+            lblNumeros.setText(numero+"+");
+            txtTela.setText("");
+            
+        } else{
+            
+            operacao();
+            sinal = '+';
+            lblNumeros.setText(numero+"+");
+            txtTela.setText("");
+            
+        }
     }                                       
 
     private void btnPontoActionPerformed(java.awt.event.ActionEvent evt) {                                         
@@ -420,7 +464,10 @@ public class GermanoFrame extends javax.swing.JFrame {
 
     private void btnIgualActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
-            
+        operacao();
+        lblNumeros.setText("");
+        txtTela.setText(numero+"");
+
     }                                        
 
     private void btnMultiplicarActionPerformed(java.awt.event.ActionEvent evt) {                                               
@@ -451,6 +498,11 @@ public class GermanoFrame extends javax.swing.JFrame {
 
     private void btnC1ActionPerformed(java.awt.event.ActionEvent evt) {                                      
         // TODO add your handling code here:
+        numeroTemp.append(txtTela.getText());
+        numeroTemp.deleteCharAt(numeroTemp.length()-1);
+        txtTela.setText(numeroTemp.toString());
+        numeroTemp.setLength(0);
+
     }                                     
 
     /**
