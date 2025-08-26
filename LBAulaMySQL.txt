@@ -1,3 +1,0 @@
-INSERT INTO alunos (nome,idade,curso) VALUES ("João",20,"Matemática"),("Maria",22,"Historia"),("Pedro",21,"Ciência da Computação"),("Ana",19,"Biologia"),("Carlos",23,"Economia");
-CREATE TABLE professores(id int PRIMARY KEY AUTO_INCREMENT,nome Varchar(50) NOT NULL,idade int NOT NULL,disciplina Varchar(50) NOT NULL);
-INSERT INTO professores(nome,idade,disciplina) VALUES 
